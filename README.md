@@ -1,6 +1,6 @@
 # Springboot JWT Authentication
 
-JSON Web Token (JWT) Authentication service using Spring Boot, Spring Security, Spring Data JPA and MySQL
+JSON Web Token (JWT) Authentication using Spring Boot, Spring Security, Spring Data JPA and MySQL
 
 ## Getting started
 ### Prerequisites
