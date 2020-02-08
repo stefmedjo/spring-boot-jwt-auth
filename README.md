@@ -18,10 +18,23 @@ $ cd spring-boot-jwt-auth
 ```
 $ mvn install
 ```
-3. Create a database with the name "spring-boot-jwt-auth".
-4. Run the project.
+3. Create a database with the name "spring".
+```
+$ CREATE DATABASE spring;
+```
+4. Set username and password.
+```
+spring.datasource.username = username
+spring.datasource.password = password
+```
+5. Run the project.
 ```
 $ mvn spring-boot:run
+```
+6. Add Roles USER and ADMIN.
+```
+$ INSERT INTO roles VALUES(null,"USER");
+$ INSERT INTO roles VALUES(null,"ADMIN");
 ```
 
 ## License
