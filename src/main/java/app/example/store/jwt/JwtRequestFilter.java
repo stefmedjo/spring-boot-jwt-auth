@@ -37,9 +37,10 @@ public class JwtRequestFilter extends OncePerRequestFilter {
         if (accessTokenHeader != null && refreshTokenHeader != null) {
             accessToken = accessTokenHeader.substring(7);
             refreshToken = refreshTokenHeader;
-            
+            /*
             System.out.println(accessToken);
             System.out.println(refreshToken);
+            */
             try {
                 username = jwt.getUsernameFromToken(accessToken);
                 System.out.println(username);
@@ -50,19 +51,12 @@ public class JwtRequestFilter extends OncePerRequestFilter {
 
             if (username != null && SecurityContextHolder.getContext().getAuthentication() == null) {
                 UserDetails userDetails = this.userService.loadUserByUsername(username);
-                System.out.println("Yes 1");
-
                 if (jwt.validateAccessToken(accessToken, userDetails)) {
-                    System.out.println("yes 2");
-
                     UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken = new UsernamePasswordAuthenticationToken(
                             userDetails, null, userDetails.getAuthorities());
                     usernamePasswordAuthenticationToken
                             .setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
                     SecurityContextHolder.getContext().setAuthentication(usernamePasswordAuthenticationToken);
-                }else{
-                    System.out.println("yes 3");
-
                 }
             }
         }
